@@ -1,3 +1,9 @@
+// document.addEventListener("DOMContentLoaded",function(event)
+// {
+//     console.log("DOM loaded");
+//     var searchWidget = document.getElementById("searchWidget");
+//     searchWidget.addEventListener("click", checkEvent,true);
+// });
 function displaySearchResults()
 {
     var searchKey = document.getElementById("searchInputBox").value;
@@ -29,30 +35,11 @@ function renderHtml(json)
         return parsedResults;
 }
 				
-function init()
-{
-	var searchWidget = document.getElementById("searchWidget");
-    function checkEvent(e)
-    {
-        e.stopPropagation();
-		e.preventDefault();
-
-		// Reference to clicked element
-		var target = e.target;
-		var href = target.getAttribute('href');
-
-		// A, DIV, BUTTON
-		var elemType = target.nodeName; // => A
-
-		alert('you clicked me!');
-
-		// I think... maybe.... could be wrong
-		window.location = href;
-
-		return false;
-	}
-	searchWidget.addEventListener("click", checkEvent,true);
-}
+// function init()
+// {
+//     var searchWidget = document.getElementById("searchWidget");
+//     searchWidget.addEventListener("click", checkEvent,true);
+// }
 				
 function getSearchResults(string) 
 {
@@ -73,9 +60,29 @@ function getSearchResults(string)
         {escape: true});
     });
 }
+function checkEvent(e)
+{
+    e.stopPropagation();
+    e.preventDefault();
+
+    // Reference to clicked element
+    var target = e.target;
+    var href = target.getAttribute('href');
+
+    // A, DIV, BUTTON
+    var elemType = target.nodeName; // => A
+
+    alert('you clicked the '+ elemType);
+
+    // I think... maybe.... could be wrong
+    window.location = href;
+
+    return false;
+}
 function clearResults()
 {
 	document.getElementById("searchInputBox").value=""
 	document.getElementById("outputLabel").innerText="";
 }
+//window.onload = init;
 	
